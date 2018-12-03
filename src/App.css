@@ -3,60 +3,70 @@
   width: 25%;
   border: 1px solid black;
   box-sizing: border-box;
-  height: 80vh;
   position: relative;
 }
 
-.game-block.cs16 {
+.game-block .cs16 {
   background-image: url('./cs16.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   opacity: .2;
   transition-duration: 2s;
+  height: 80vh;
 }
 
-.game-block.cs16:hover,
-.game-block.dota2:hover,
-.game-block.quake:hover,
-.game-block.sc:hover {
+.game-block .cs16:hover,
+.game-block .dota2:hover,
+.game-block .quake:hover,
+.game-block .sc:hover {
   opacity: 1;
 }
 
-.game-block.dota2 {
+.game-block .dota2 {
   background-image: url('./dota2.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   opacity: .2;
   transition-duration: 2s;
+  height: 80vh;
 }
 
-.game-block.quake {
-  /*background-image: url('./quake.jpg');*/
+.game-block .quake {
+  background-image: url('./quake.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   opacity: .2;
   transition-duration: 2s;
+  height: 80vh;
 }
 
-.game-block.sc {
+.game-block .sc {
   background-image: url('./sc.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   opacity: .2;
   transition-duration: 2s;
-  display: none;
+  height: 80vh;
 }
 
 button {
   display: block;
   margin: 5px auto;
-  
+
 }
 
 button.register {
   position: absolute;
+}
+
+.rel {
+  position: relative;
+}
+
+#myDIV {
+  display: none;
 }
