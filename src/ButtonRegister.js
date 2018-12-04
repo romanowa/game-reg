@@ -5,8 +5,6 @@ import './ButtonRegister.css';
 class ButtonRegister extends Component {
   handleClick (event) {
     var x = document.getElementById("myDIV");
-    console.log('============', x.style.display);
-
     if (x.style.display === "none") {
         x.style.display = "block";
     } else {

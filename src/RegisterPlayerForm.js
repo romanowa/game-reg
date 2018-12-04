@@ -1,13 +1,24 @@
 import React, { Component } from 'react';
 
+const request = require('request');
+
+
+
 class RegisterPlayerForm extends Component {
+	makeRequest() {
+		request('http://localhost:3001/api/gamers', { json: true }, (err, res, body) => {
+  if (err) { return console.log(err); }
+  console.log(body);
+});
+	}
   render() {
     return (
     	<div id="myDIV">
-    		<label for="nickname">Nickname</label>
-  			<input id="nickname"></input>
-  			<label for="email">Email</label>
-  			<input type="email" id="female"></input>
+    		<p>Nickname</p>
+  			<input></input>
+  			<p>Email</p>
+  			<input type="email"></input>
+  			<button onClick={this.makeRequest}>register</button>
     	</div>
     );
   }
