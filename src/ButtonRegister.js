@@ -1,19 +1,35 @@
 import React, { Component } from 'react';
 
 import './ButtonRegister.css';
+import Popup from './Popup.js';
 
 class ButtonRegister extends Component {
-  handleClick (event) {
-    var x = document.getElementById("myDIV");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
+  constructor() {
+    super();
+    this.state = {
+      showPopup: false
+    };
+  }
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+  }
 
-  };
   render() {
-    return <button onClick={this.handleClick}>Register!!!</button>;
+    return (
+      <div>
+      <button onClick={this.togglePopup.bind(this)}>Register!!!</button>
+      {this.state.showPopup ?
+          <Popup
+            form={this.props.form}
+            text='Close Me'
+            closePopup={this.togglePopup.bind(this)}
+          />
+          : null
+        }
+      </div>
+    );
   }
 }
 
