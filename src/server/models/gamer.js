@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 const gamerSchema = new Schema({
+  game: {
+    type: mongoose.Schema.Types.Mixed,
+    required: true,
+  },
   nickname: {
     type: mongoose.Schema.Types.Mixed,
     required: true,

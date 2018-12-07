@@ -23,6 +23,7 @@ class ButtonRegister extends Component {
       {this.state.showPopup ?
           <Popup
             form={this.props.form}
+            game={this.props.game}
             text='Close Me'
             closePopup={this.togglePopup.bind(this)}
           />

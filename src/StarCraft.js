@@ -17,8 +17,8 @@ class StarCraft extends Component {
     return (
     	<div className="rel game-block">
           <div className="sc"></div>
-          <ButtonRegister form="player"/>
-          <ButtonCommands />
+          <ButtonRegister form="player" game="starcraft"/>
+          <ButtonCommands game="starcraft"/>
       </div>
     );
   }

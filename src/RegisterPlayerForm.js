@@ -25,7 +25,12 @@ class RegisterPlayerForm extends Component {
 		request.post({
       headers: {'content-type' : 'application/json'},
       url: 'http://localhost:3001/api/gamers',
-      body: JSON.stringify({nickname: this.state.nickname, email: this.state.email})
+      body: JSON.stringify({
+        game: this.props.game,
+        nickname: this.state.nickname,
+        email: this.state.email,
+        captain: false,
+      })
     }, (err, res, body) => {
         if (err) {
           return console.log(err);
@@ -36,6 +41,7 @@ class RegisterPlayerForm extends Component {
   render() {
     return (
     	<div>
+        <span className="deleteMeetingClose" onClick={this.props.reg}>&times;</span>
     		<p>Nickname</p>
   			<input
           name="nickname"

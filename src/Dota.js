@@ -17,8 +17,8 @@ class Dota extends Component {
     return (
     	<div className="rel game-block">
           <div className="dota2"></div>
-          <ButtonRegister form="team"/>
-          <ButtonCommands />
+          <ButtonRegister form="team" game="dota"/>
+          <ButtonCommands game="dota"/>
       </div>
     );
   }

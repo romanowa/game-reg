@@ -19,21 +19,24 @@ app.get('/', function(req, res) {
 });
 
 app.get('/api/gamers', function(req, res) {
-  Gamer.find({}).then(eachOne => {
+  Gamer.find({ game: req.query.game }).then(eachOne => {
     res.json(eachOne);
     })
   })
 
 app.get('/api/teams', function(req, res) {
-  Team.find({}).then(eachOne => {
+  Team.find({ game: req.query.game}).then(eachOne => {
     res.json(eachOne);
     })
   })
 
 app.post('/api/gamers', function(req, res) {
+  console.log('**********', req.body)
   Gamer.create({
+    game: req.body.game,
     nickname: req.body.nickname,
     email: req.body.email,
+    captain: req.body.captain,
   }).then(gamer => {
     res.json(gamer)
   });
@@ -41,10 +44,13 @@ app.post('/api/gamers', function(req, res) {
 
 app.post('/api/teams', function(req, res) {
   Team.create({
+    game: req.body.game,
     title: req.body.title,
     captain: req.body.captain,
   }).then(team => {
     res.json(team)
+  }).catch(err => {
+    res.status(406).send('Not Acceptable');
   });
   /*Gamer.create({
     nickname: req.body.nickname,

@@ -9,6 +9,14 @@ import Quake from './Quake.js';
 import StarCraft from './StarCraft.js';
 
 class App extends Component {
+  /*closePopup(event) {
+    if ((!event.target.closest(".popup_inner") || !event.target.closest(".popup_inner").length) && document.getElementsByClassName("popup").length) {
+      document.getElementsByClassName("popup")[0].style.display = "none";
+    }
+  }
+  componentDidMount () {
+      document.body.addEventListener('click', this.closePopup);
+  }*/
   render() {
     return (
       <div className="App">

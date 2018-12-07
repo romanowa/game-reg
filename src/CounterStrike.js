@@ -16,8 +16,8 @@ class CounterStrike extends Component {
     return (
     	<div className="rel game-block">
           <div className="cs16"></div>
-          <ButtonRegister form="team"/>
-          <ButtonCommands />
+          <ButtonRegister form="team" game="counterstrike"/>
+          <ButtonCommands game="counterstrike"/>
         </div>
     );
   }

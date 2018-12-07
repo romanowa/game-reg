@@ -9,9 +9,9 @@ class Popup extends Component {
       <div className='popup'>
         <div className='popup_inner'>
         {form === 'player' ? (
-          <RegisterPlayerForm reg={this.props.closePopup}/>
+          <RegisterPlayerForm reg={this.props.closePopup} game={this.props.game}/>
         ) : (
-          <RegisterTeamForm reg={this.props.closePopup}/>
+          <RegisterTeamForm reg={this.props.closePopup} game={this.props.game}/>
         )}
         </div>
       </div>

@@ -19,7 +19,7 @@ class Quake extends Component {
     	<div className="rel game-block">
           <div className="quake"></div>
           <ButtonRegister />
-          <ButtonCommands />
+          <ButtonCommands game="quake"/>
       </div>
     );
   }
