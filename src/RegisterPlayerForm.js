@@ -30,6 +30,7 @@ class RegisterPlayerForm extends Component {
         nickname: this.state.nickname,
         email: this.state.email,
         captain: false,
+        freeForTeam: false,
       })
     }, (err, res, body) => {
         if (err) {

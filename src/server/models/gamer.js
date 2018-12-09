@@ -5,6 +5,10 @@ const gamerSchema = new Schema({
     type: mongoose.Schema.Types.Mixed,
     required: true,
   },
+  team: {
+    type: mongoose.Schema.Types.Mixed,
+    required: false,
+  },
   nickname: {
     type: mongoose.Schema.Types.Mixed,
     required: true,
@@ -13,11 +17,11 @@ const gamerSchema = new Schema({
     type: mongoose.Schema.Types.Mixed,
     required: true,
   },
-  team: {
-    type: mongoose.Schema.Types.Mixed,
-    required: false,
-  },
   captain: {
+    type: mongoose.Schema.Types.Boolean,
+    required: true,
+  },
+  freeForTeam: {
     type: mongoose.Schema.Types.Boolean,
     required: true,
   },

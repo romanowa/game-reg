@@ -19,48 +19,47 @@ app.get('/', function(req, res) {
 });
 
 app.get('/api/gamers', function(req, res) {
-  Gamer.find({ game: req.query.game }).then(eachOne => {
+  if (req.query.game) {
+    Gamer.find({ game: req.query.game }).then(eachOne => {
+    res.json(eachOne);
+    });
+  } else if(req.query.team) {
+    console.log('==========GAMER REQQ', req.query.team)
+    Gamer.find({ team: req.query.team }).then(eachOne => {
     res.json(eachOne);
     })
-  })
+  }
+  
+  
+  });
+
 
 app.get('/api/teams', function(req, res) {
   Team.find({ game: req.query.game}).then(eachOne => {
-    res.json(eachOne);
+    console.log('£££££', Array.isArray(eachOne))
+    res.send(eachOne);
     })
   })
 
 app.post('/api/gamers', function(req, res) {
-  console.log('**********', req.body)
-  Gamer.create({
-    game: req.body.game,
-    nickname: req.body.nickname,
-    email: req.body.email,
-    captain: req.body.captain,
-  }).then(gamer => {
-    res.json(gamer)
-  });
-});
-
-app.post('/api/teams', function(req, res) {
-  Team.create({
-    game: req.body.game,
-    title: req.body.title,
-    captain: req.body.captain,
-  }).then(team => {
-    res.json(team)
-  }).catch(err => {
-    res.status(406).send('Not Acceptable');
-  });
-  /*Gamer.create({
-    nickname: req.body.nickname,
-    email: req.body.email,
-    team: req.body.team,
-    captain: req.body.nickname == req.body.captain,
-    comment: req.body.comment,
-  }).then(gamer => {
-    res.json(gamer)
-  });*/
+  console.log('$-$-$-$-', req.body)
+  if (Array.isArray(req.body)) {
+    Gamer.insertMany( req.body, { ordered: true } )
+    .then(result => {
+      res.json(result)
+    })
+  } else {
+    Gamer.create({
+      game: req.body.game,
+      nickname: req.body.nickname,
+      email: req.body.email,
+      captain: req.body.captain,
+      freeForTeam: req.body.freeForTeam
+    })
+    .then(result => {
+      res.json(result)
+    })
+  }
 });
 
 mongoose.connect(url, function (err, db) {
