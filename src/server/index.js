@@ -20,6 +20,15 @@ app.get('/', function(req, res) {
 
 app.get('/api/gamers', function(req, res) {
   if (req.query.game) {
+
+    /*Gamer.aggregate([
+      { $match : { game : req.query.game }},
+      { $group : {_id : "$team"}}]).then(eachOne => {
+    res.json(eachOne);*/
+
+
+
+
     Gamer.find({ game: req.query.game }).then(eachOne => {
     res.json(eachOne);
     });
@@ -29,8 +38,8 @@ app.get('/api/gamers', function(req, res) {
     res.json(eachOne);
     })
   }
-  
-  
+
+
   });
 
 
@@ -44,7 +53,7 @@ app.get('/api/teams', function(req, res) {
 app.post('/api/gamers', function(req, res) {
   console.log('$-$-$-$-', req.body)
   if (Array.isArray(req.body)) {
-    Gamer.insertMany( req.body, { ordered: true } )
+    Gamer.insertMany( req.body )
     .then(result => {
       res.json(result)
     })

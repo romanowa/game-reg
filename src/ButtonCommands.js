@@ -13,7 +13,7 @@ class ButtonCommands extends Component {
       gamers: [],
       gamersTeam: null,
     };
-    this.makeTeamRequest = this.makeTeamRequest.bind(this);
+    //this.makeTeamRequest = this.makeTeamRequest.bind(this);
     this.makeGamerRequest = this.makeGamerRequest.bind(this);
     this.makeGamersTeamRequest = this.makeGamersTeamRequest.bind(this);
 
@@ -23,7 +23,7 @@ class ButtonCommands extends Component {
       showPopup: !this.state.showPopup
     });
   }
-	makeTeamRequest() {
+	/*makeTeamRequest() {
 		request.get('http://localhost:3001/api/teams?game=' + this.props.game, (err, res, body) => {
 	        if (err) {
 	          return console.log(err);
@@ -37,14 +37,15 @@ class ButtonCommands extends Component {
           })
 	      });
 		this.togglePopup()
-    
-	}
+
+	}*/
 
 	makeGamerRequest() {
 		request.get('http://localhost:3001/api/gamers?game=' + this.props.game, (err, res, body) => {
 	        if (err) {
 	          return console.log(err);
 	        }
+	        console.log('------- RES BODYYYY', res.body)
 	        this.setState({ gamers: JSON.parse(res.body) })
 	      });
 		this.togglePopup()
@@ -61,7 +62,7 @@ class ButtonCommands extends Component {
   }
 
   render() {
-    console.log(this.state.gamersTeam)
+    console.log('-------', this.state.gamers)
   	/*const teams = this.state.teams;
   	console.log('+++++++++++++++', JSON.parse(teams[0]))
   	const teamsList = teams.map((team) => {
@@ -71,7 +72,7 @@ class ButtonCommands extends Component {
     	<div>
     		{this.props.game === 'starcraft' ?
     			<button onClick={this.makeGamerRequest}>Show list of gamers</button>
-    			: <button onClick={this.makeTeamRequest}>Show list of commands</button>
+    			: <button onClick={this.makeGamerRequest}>Show list of commands</button>
     		}
 	    	{this.state.showPopup ?
 	    		this.state.teams ?
@@ -81,7 +82,7 @@ class ButtonCommands extends Component {
                         <p>{item.title}</p>
                         <p></p>
                       </div>
-                     
+
                      );
                   })
 	    			: this.state.gamers.map(function(item, index){

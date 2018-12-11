@@ -80,6 +80,7 @@ button {
   margin: auto;
   background: white;
   overflow: auto;
+  border-radius: 6px;
 }
 
 .deleteMeetingClose {
@@ -88,4 +89,21 @@ button {
     position: absolute;
     right: 10px;
     top: 5px;
+}
+
+.form__input {
+    display: block;
+    width: 40%;
+    padding: 20px;
+    -webkit-appearance: none;
+    border: 0;
+    outline: 0;
+    transition: 0.3s;
+    background-color: aliceblue;
+    border-radius: 6px
+
+}
+
+.form__input:focus {
+  filter: brightness(95%);
 }
