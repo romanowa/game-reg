@@ -109,14 +109,15 @@ class RegisterTeamForm extends Component {
   }
   render() {
     return (
-    	<div className="form">
+    	<form className="form">
         <span className="deleteMeetingClose" onClick={this.props.reg}>&times;</span>
         <p>Team title</p>
         <input
           name="team"
           value={this.state.team}
           onChange={this.handleChange}
-          className="form__input"></input>
+          className="form__input"
+          required></input>
         <div>
           <p>Team captain</p>
           <p>Nickname</p>
@@ -231,8 +232,8 @@ class RegisterTeamForm extends Component {
             onChange={this.handleChange}
             className="form__input"></input>
         </div>
-  			<button onClick={this.makeRequest}>Register</button>
-    	</div>
+  			<button className="form__register" onClick={this.makeRequest}>Register</button>
+    	</form>
     );
   }
 }

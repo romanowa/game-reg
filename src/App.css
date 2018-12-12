@@ -107,3 +107,16 @@ button {
 .form__input:focus {
   filter: brightness(95%);
 }
+
+.form__register {
+  width: 100%;
+  -webkit-appearance: none;
+  border: 0;
+  outline: 0;
+  padding: 20px;
+  background-color: aliceblue;
+}
+
+.form__register:hover {
+  filter: brightness(95%);
+}

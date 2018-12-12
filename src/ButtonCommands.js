@@ -63,6 +63,10 @@ class ButtonCommands extends Component {
 
   render() {
     console.log('-------', this.state.gamers)
+
+    const aa = this.state.gamers.filter(bb => bb.team === 'asdf')
+
+    console.log('GHTHYSDD#####', aa)
   	/*const teams = this.state.teams;
   	console.log('+++++++++++++++', JSON.parse(teams[0]))
   	const teamsList = teams.map((team) => {
