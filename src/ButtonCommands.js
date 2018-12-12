@@ -9,69 +9,49 @@ class ButtonCommands extends Component {
     super(props);
     this.state = {
       showPopup: false,
-      teams: null,
       gamers: [],
-      gamersTeam: null,
     };
-    //this.makeTeamRequest = this.makeTeamRequest.bind(this);
-    this.makeGamerRequest = this.makeGamerRequest.bind(this);
-    this.makeGamersTeamRequest = this.makeGamersTeamRequest.bind(this);
 
+    this.makeGamerRequest = this.makeGamerRequest.bind(this);
   }
   togglePopup() {
     this.setState({
       showPopup: !this.state.showPopup
     });
   }
-	/*makeTeamRequest() {
-		request.get('http://localhost:3001/api/teams?game=' + this.props.game, (err, res, body) => {
-	        if (err) {
-	          return console.log(err);
-	        }
-	        this.setState({ teams: JSON.parse(res.body) })
-          const teams = this.state.teams.map(team => {
-            return team.title;
-          })
-          teams.forEach(team => {
-            this.makeGamersTeamRequest(team)
-          })
-	      });
-		this.togglePopup()
-
-	}*/
 
 	makeGamerRequest() {
 		request.get('http://localhost:3001/api/gamers?game=' + this.props.game, (err, res, body) => {
 	        if (err) {
 	          return console.log(err);
 	        }
-	        console.log('------- RES BODYYYY', res.body)
 	        this.setState({ gamers: JSON.parse(res.body) })
 	      });
 		this.togglePopup()
 	}
 
-  makeGamersTeamRequest(teamTitle) {
-    request.get('http://localhost:3001/api/gamers?team=' + teamTitle, (err, res, body) => {
-          if (err) {
-            return console.log(err);
-          }
-          this.setState({ gamersTeam: JSON.parse(res.body) })
-        });
-    this.togglePopup()
-  }
-
   render() {
-    console.log('-------', this.state.gamers)
+    const teams = [...new Set(this.state.gamers.map(item => item.team))];
 
-    const aa = this.state.gamers.filter(bb => bb.team === 'asdf')
+    const listOfGamers = (item) => {
+      return this.state.gamers.map((itemG, index) => {
+        if (itemG.team === item) {
+          return <p key={index}>{itemG.nickname}</p>
+        }
+      })
+    }
 
-    console.log('GHTHYSDD#####', aa)
-  	/*const teams = this.state.teams;
-  	console.log('+++++++++++++++', JSON.parse(teams[0]))
-  	const teamsList = teams.map((team) => {
-                        return <li>{team.title}</li>;
-                      })*/
+    const listOfTeams = (teams) => {
+      return teams.map((item, index) => {
+                return (
+                  <div key={ index }>
+                    <p>{item}</p>
+                    {listOfGamers(item)}
+                  </div>
+                 );
+              })
+    }
+
     return (
     	<div>
     		{this.props.game === 'starcraft' ?
@@ -79,17 +59,9 @@ class ButtonCommands extends Component {
     			: <button onClick={this.makeGamerRequest}>Show list of commands</button>
     		}
 	    	{this.state.showPopup ?
-	    		this.state.teams ?
-            this.state.teams.map(function(item, index){
-                    return (
-                      <div key={ index }>
-                        <p>{item.title}</p>
-                        <p></p>
-                      </div>
-
-                     );
-                  })
-	    			: this.state.gamers.map(function(item, index){
+	    		this.props.game !== 'starcraft' ?
+            listOfTeams(teams)
+	    			: this.state.gamers.map((item, index) => {
                     return (
                       <div key={ index }>
                         <p>{item.nickname} - {item.email}</p>

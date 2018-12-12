@@ -40,22 +40,25 @@ class RegisterPlayerForm extends Component {
       });
 	}
   render() {
+     const isAbled = (this.state.nickname && this.state.email); 
     return (
-    	<div>
+    	<form onSubmit={this.makeRequest}>
         <span className="deleteMeetingClose" onClick={this.props.reg}>&times;</span>
     		<p>Nickname</p>
   			<input
           name="nickname"
           value={this.state.nickname}
-          onChange={ this.handleChange }></input>
+          onChange={ this.handleChange }
+          className="form__input"></input>
   			<p>Email</p>
   			<input
           type="email"
           name="email"
           value={this.state.email}
-          onChange={ this.handleChange }></input>
-  			<button onClick={this.makeRequest}>Register!!!</button>
-    	</div>
+          onChange={ this.handleChange }
+          className="form__input"></input>
+  			<button disabled={!isAbled} className="form__register" type="submit">Register!!!</button>
+    	</form>
     );
   }
 }

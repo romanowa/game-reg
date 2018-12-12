@@ -11,21 +11,21 @@ class RegisterTeamForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      team: null,
-      captain: null,
-      captainEmail: null,
-      playerNickname1: null,
-      player1email: null,
-      player2nickname: null,
-      player2email: null,
-      player3nickname: null,
-      player3email: null,
-      player4nickname: null,
-      player4email: null,
-      player5nickname: null,
-      player5email: null,
-      player6nickname: null,
-      player6email: null,
+      team: '',
+      captain: '',
+      captainEmail: '',
+      player1nickname: '',
+      player1email: '',
+      player2nickname: '',
+      player2email: '',
+      player3nickname: '',
+      player3email: '',
+      player4nickname: '',
+      player4email: '',
+      player5nickname: '',
+      player5email: '',
+      player6nickname: '',
+      player6email: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -108,8 +108,19 @@ class RegisterTeamForm extends Component {
       });
   }
   render() {
+    const isAbled = (this.state.team && 
+      this.state.captain && 
+      this.state.captainEmail &&
+      this.state.player1nickname && 
+      this.state.player1email &&
+      this.state.player2nickname &&
+      this.state.player2email &&
+      this.state.player3nickname &&
+      this.state.player3email &&
+      this.state.player4nickname &&
+      this.state.player4email); 
     return (
-    	<form className="form">
+    	<form className="form" onSubmit={this.makeRequest}>
         <span className="deleteMeetingClose" onClick={this.props.reg}>&times;</span>
         <p>Team title</p>
         <input
@@ -232,7 +243,7 @@ class RegisterTeamForm extends Component {
             onChange={this.handleChange}
             className="form__input"></input>
         </div>
-  			<button className="form__register" onClick={this.makeRequest}>Register</button>
+  			<button disabled={!isAbled} className="form__register" type="submit">Register</button>
     	</form>
     );
   }
