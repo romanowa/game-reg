@@ -189,4 +189,12 @@
   text-align: center;
 }
 
+.header {
+  margin-bottom: -5px;
+}
+
+.disabled {
+  opacity: .4;
+}
+
 

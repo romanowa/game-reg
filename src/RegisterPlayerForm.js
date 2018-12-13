@@ -40,24 +40,26 @@ class RegisterPlayerForm extends Component {
       });
 	}
   render() {
-     const isAbled = (this.state.nickname && this.state.email); 
+     const isAbled = (this.state.nickname && this.state.email && this.state.email.includes('@')); 
     return (
     	<form onSubmit={this.makeRequest}>
         <span className="deleteMeetingClose" onClick={this.props.reg}>&times;</span>
-    		<p>Nickname</p>
+    		<p className="inline">Nickname
   			<input
           name="nickname"
           value={this.state.nickname}
           onChange={ this.handleChange }
-          className="form__input"></input>
-  			<p>Email</p>
+          className="form__input field"></input>
+          </p>
+  			<p className="inline">Email
   			<input
           type="email"
           name="email"
           value={this.state.email}
           onChange={ this.handleChange }
-          className="form__input"></input>
-  			<button disabled={!isAbled} className="form__register" type="submit">Register!!!</button>
+          className="form__input field"></input>
+          </p>
+  			<button disabled={!isAbled} className={"form__register" + (!isAbled ? ' disabled' : '')} type="submit">Register!!!</button>
     	</form>
     );
   }
