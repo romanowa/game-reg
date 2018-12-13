@@ -108,21 +108,21 @@ class RegisterTeamForm extends Component {
       });
   }
   render() {
-    const isAbled = (this.state.team && 
-      this.state.captain && 
+    const isAbled = (this.state.team &&
+      this.state.captain &&
       this.state.captainEmail &&
-      this.state.player1nickname && 
+      this.state.player1nickname &&
       this.state.player1email &&
       this.state.player2nickname &&
       this.state.player2email &&
       this.state.player3nickname &&
       this.state.player3email &&
       this.state.player4nickname &&
-      this.state.player4email); 
+      this.state.player4email);
     return (
     	<form className="form" onSubmit={this.makeRequest}>
         <span className="deleteMeetingClose" onClick={this.props.reg}>&times;</span>
-        <p>Team title</p>
+        <p className="bold">Team title</p>
         <input
           name="team"
           value={this.state.team}
@@ -130,63 +130,70 @@ class RegisterTeamForm extends Component {
           className="form__input"
           required></input>
         <div>
-          <p>Team captain</p>
-          <p>Nickname</p>
-          <input
+          <p className="bold">Team captain</p>
+          <p className="inline">
+            Nickname
+            <input
             name="captain"
             value={this.state.captain}
             onChange={this.handleChange}
-            className="form__input"
-            placeholder="nickname"></input>
-          <p>Email</p>
-          <input
+            className="form__input field"></input>
+          </p>
+          <p className="inline">
+            Email
+            <input
             name="captainEmail"
             type="email"
             value={this.state.captainEmail}
             onChange={this.handleChange}
-            className="form__input"></input>
+            className="form__input field"></input>
+          </p>
         </div>
         <div>
-          <p>Player 1</p>
-          <p>Nickname</p>
+          <p className="bold">Player 1</p>
+          <p className="inline">Nickname
           <input
             name="player1nickname"
             value={this.state.player1nickname}
             onChange={this.handleChange}
-            className="form__input"></input>
-          <p>Email</p>
+            className="form__input field"></input>
+            </p>
+          <p className="inline">Email
           <input
             type="email"
             name="player1email"
             value={this.state.player1email}
             onChange={this.handleChange}
-            className="form__input"></input>
+            className="form__input field"></input>
+            </p>
         </div>
         <div>
-          <p>Player 2</p>
-          <p>Nickname</p>
+          <p className="bold">Player 2</p>
+          <p className="inline">Nickname
           <input
             name="player2nickname"
             value={this.state.player2nickname}
             onChange={this.handleChange}
-            className="form__input"></input>
-          <p>Email</p>
+            className="form__input field"></input>
+            </p>
+          <p className="inline">Email
           <input
             type="email"
             name="player2email"
             value={this.state.player2email}
             onChange={this.handleChange}
-            className="form__input"></input>
+            className="form__input field"></input>
+            </p>
         </div>
         <div>
-          <p>Player 3</p>
-          <p>Nickname</p>
+          <p className="bold">Player 3</p>
+          <p className="inline">Nickname</p>
           <input
             name="player3nickname"
             value={this.state.player3nickname}
             onChange={this.handleChange}
             className="form__input"></input>
-          <p>Email</p>
+          <p className="inline">Email</p>
           <input
             type="email"
             name="player3email"
@@ -195,14 +202,14 @@ class RegisterTeamForm extends Component {
             className="form__input"></input>
         </div>
         <div>
-          <p>Player 4</p>
-          <p>Nickname</p>
+          <p className="bold">Player 4</p>
+          <p className="inline">Nickname</p>
           <input
             name="player4nickname"
             value={this.state.player4nickname}
             onChange={this.handleChange}
             className="form__input"></input>
-          <p>Email</p>
+          <p className="inline">Email</p>
           <input
             type="email"
             name="player4email"
@@ -211,15 +218,15 @@ class RegisterTeamForm extends Component {
             className="form__input"></input>
         </div>
         <div>
-          <p>Replacement players</p>
-          <p>Player 5</p>
-          <p>Nickname</p>
+          <p className="bold">Replacement players</p>
+          <p className="bold">Player 5</p>
+          <p className="inline">Nickname</p>
           <input
             name="player5nickname"
             value={this.state.player5nickname}
             onChange={this.handleChange}
             className="form__input"></input>
-          <p>Email</p>
+          <p className="inline">Email</p>
           <input
             type="email"
             name="player5email"
@@ -228,14 +235,14 @@ class RegisterTeamForm extends Component {
             className="form__input"></input>
         </div>
         <div>
-          <p>Player 6</p>
-          <p>Nickname</p>
+          <p className="bold">Player 6</p>
+          <p className="inline">Nickname</p>
           <input
             name="player6nickname"
             value={this.state.player6nickname}
             onChange={this.handleChange}
             className="form__input"></input>
-          <p>Email</p>
+          <p className="inline">Email</p>
           <input
             type="email"
             name="player6email"

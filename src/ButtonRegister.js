@@ -18,8 +18,8 @@ class ButtonRegister extends Component {
 
   render() {
     return (
-      <div>
-      <button onClick={this.togglePopup.bind(this)}>Register!!!</button>
+      <div className="center">
+      <button className="button_register" onClick={this.togglePopup.bind(this)}>Register!!!</button>
       {this.state.showPopup ?
           <Popup
             form={this.props.form}

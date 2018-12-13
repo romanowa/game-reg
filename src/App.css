@@ -1,6 +1,6 @@
 .game-block {
   float: left;
-  width: 25%;
+  width: 24%;
   border: 1px solid black;
   box-sizing: border-box;
   position: relative;
@@ -11,7 +11,7 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  opacity: .2;
+  opacity: .4;
   transition-duration: 2s;
   height: 80vh;
 }
@@ -28,7 +28,7 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  opacity: .2;
+  opacity: .4;
   transition-duration: 2s;
   height: 80vh;
 }
@@ -38,7 +38,7 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  opacity: .2;
+  opacity: .4;
   transition-duration: 2s;
   height: 80vh;
 }
@@ -48,15 +48,9 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  opacity: .2;
+  opacity: .4;
   transition-duration: 2s;
   height: 80vh;
-}
-
-button {
-  display: block;
-  margin: 5px auto;
-
 }
 
 .popup {
@@ -91,21 +85,26 @@ button {
     top: 5px;
 }
 
+.form {
+  color: #38465E;
+  font-size: 1em;
+}
+
 .form__input {
     display: block;
-    width: 40%;
+    width: 35%;
     padding: 20px;
     -webkit-appearance: none;
     border: 0;
     outline: 0;
     transition: 0.3s;
-    background-color: aliceblue;
+    background-color: #CDF2EF;
     border-radius: 6px
 
 }
 
 .form__input:focus {
-  filter: brightness(95%);
+  background-color: #6DBDB7;
 }
 
 .form__register {
@@ -114,9 +113,80 @@ button {
   border: 0;
   outline: 0;
   padding: 20px;
-  background-color: aliceblue;
+  background-color: #CDF2EF;
+  color: #38465E;
+  font-size: 1.45em;
 }
 
 .form__register:hover {
-  filter: brightness(95%);
+  background-color: #6DBDB7;
 }
+
+.button_register {
+  -webkit-appearance: none;
+  width: 80%;
+  border: 0;
+  outline: 0;
+  position: absolute;
+  top: 60vh;
+  left: 10%;
+  background: #9DDCD8;
+  border-radius: 100px;
+  padding: 20px 60px;
+  color: #38465E;
+  text-decoration: none;
+  font-size: 1.45em;
+}
+
+.button_list {
+  -webkit-appearance: none;
+  width: 80%;
+  border: 0;
+  outline: 0;
+  position: absolute;
+  top: 70vh;
+  left: 10%;
+  background: #9DDCD8;
+  border-radius: 100px;
+  padding: 20px 60px;
+  color: #38465E;
+  text-decoration: none;
+  font-size: 1.45em;
+}
+
+.team_title {
+  text-transform: uppercase;
+}
+
+.team_block {
+  border: 1px solid #38465E;
+}
+
+.row {
+  -webkit-column-count: 2; /* Chrome, Safari, Opera */
+  -moz-column-count: 2; /* Firefox */
+  column-count: 2;
+}
+
+.column {
+  margin: 0;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.inline {
+  display: inline-block;
+  width: 50%;
+}
+
+.form__input.field {
+  width: 70%;
+}
+
+.center_head {
+  text-align: center;
+}
+
+
