@@ -97,13 +97,12 @@ class RegisterTeamForm extends Component {
           url: 'http://localhost:3001/api/gamers',
           body: JSON.stringify(data)
         }, (err, res) => {
-          console.log('@@@@@', err)
             if (err) {
               alert(`Something wrong: ${err}`);
               return reject(err)
             }
               alert('SUCCESS!');
-              return <Popup />
+              return resolve(res);
           })
       });
   }

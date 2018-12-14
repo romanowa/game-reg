@@ -12,7 +12,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   opacity: .4;
-  transition-duration: 2s;
+  transition: opacity 2s;
   height: 80vh;
 }
 
@@ -29,7 +29,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   opacity: .4;
-  transition-duration: 2s;
+  transition: opacity 2s;
   height: 80vh;
 }
 
@@ -39,7 +39,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   opacity: .4;
-  transition-duration: 2s;
+  transition: opacity 2s;
   height: 80vh;
 }
 
@@ -49,7 +49,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   opacity: .4;
-  transition-duration: 2s;
+  transition: opacity 2s;
   height: 80vh;
 }
 
