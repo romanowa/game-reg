@@ -5,7 +5,6 @@ const path = require('path');
 //const expressValidator = require('express-validator');
 const mongoose = require('mongoose');
 const Gamer = require('./models/gamer.js');
-const Team = require('./models/team.js');
 const app = express();
 const url = 'mongodb://localhost:27017/gamers';
 const cors = require('cors');
@@ -20,23 +19,13 @@ app.get('/', function(req, res) {
 
 app.get('/api/gamers', function(req, res) {
   if (req.query.game) {
-
-    /*Gamer.aggregate([
-      { $match : { game : req.query.game }},
-      { $group : {_id : "$team"}}]).then(eachOne => {
-    res.json(eachOne);*/
-
-
-
-
     Gamer.find({ game: req.query.game }).then(eachOne => {
     res.json(eachOne);
     });
-  } else if(req.query.team) {
-    console.log('==========GAMER REQQ', req.query.team)
-    Gamer.find({ team: req.query.team }).then(eachOne => {
+  } else {
+    Gamer.find({ game: null }).then(eachOne => {
     res.json(eachOne);
-    })
+    });
   }
 
 

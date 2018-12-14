@@ -197,4 +197,19 @@
   opacity: .4;
 }
 
+.button_register_player,
+.button_list_players {
+  -webkit-appearance: none;
+  margin: 10px;
+  width: 20%;
+  border: 0;
+  outline: 0;
+  background: #9DDCD8;
+  border-radius: 100px;
+  padding: 20px 20px;
+  color: #38465E;
+  text-decoration: none;
+  font-size: 1.45em;
+}
+
 

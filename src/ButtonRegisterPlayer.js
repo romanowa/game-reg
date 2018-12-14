@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 
-import './ButtonRegister.css';
 import Popup from './Popup.js';
 
-class ButtonRegister extends Component {
+class ButtonRegisterPlayer extends Component {
   constructor() {
     super();
     this.state = {
@@ -19,11 +18,10 @@ class ButtonRegister extends Component {
   render() {
     return (
       <div className="center">
-      <button className="button_register" onClick={this.togglePopup.bind(this)}>{this.props.game === 'starcraft' || 'quake' ? 'Register as a player': 'Register as a team'}</button>
+      <button className="button_register_player" onClick={this.togglePopup.bind(this)}>Register without team</button>
       {this.state.showPopup ?
           <Popup
-            form={this.props.form}
-            game={this.props.game}
+            form="player_without_team"
             closePopup={this.togglePopup.bind(this)}
           />
           : null
@@ -33,4 +31,4 @@ class ButtonRegister extends Component {
   }
 }
 
-export default ButtonRegister;
+export default ButtonRegisterPlayer;

@@ -3,7 +3,7 @@ let Schema = mongoose.Schema;
 const gamerSchema = new Schema({
   game: {
     type: mongoose.Schema.Types.Mixed,
-    required: true,
+    required: false,
   },
   team: {
     type: mongoose.Schema.Types.Mixed,
@@ -19,7 +19,7 @@ const gamerSchema = new Schema({
   },
   captain: {
     type: mongoose.Schema.Types.Boolean,
-    required: true,
+    required: false,
   },
   freeForTeam: {
     type: mongoose.Schema.Types.Boolean,

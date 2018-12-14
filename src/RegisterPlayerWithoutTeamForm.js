@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 
 const request = require('request');
 
-class RegisterPlayerForm extends Component {
+class RegisterPlayerWithoutTeamForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       nickname: null,
-      email: null
+      email: null,
+      comment: null,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -27,11 +28,10 @@ class RegisterPlayerForm extends Component {
         headers: {'content-type' : 'application/json'},
         url: 'http://localhost:3001/api/gamers',
         body: JSON.stringify({
-          game: this.props.game,
           nickname: this.state.nickname,
           email: this.state.email,
-          captain: false,
-          freeForTeam: false,
+          comment: this.state.comment,
+          freeForTeam: true,
         })
       }, (err, res) => {
           if (err) {
@@ -44,7 +44,7 @@ class RegisterPlayerForm extends Component {
     });
 	}
   render() {
-    const isAbled = (this.state.nickname && this.state.email && this.state.email.includes('@'));
+     const isAbled = (this.state.nickname && this.state.email && this.state.email.includes('@'));
     return (
     	<form onSubmit={this.makeRequest}>
         <span className="deleteMeetingClose" onClick={this.props.reg}>&times;</span>
@@ -63,10 +63,17 @@ class RegisterPlayerForm extends Component {
           onChange={ this.handleChange }
           className="form__input field"></input>
           </p>
+        <p className="inline">Comment
+        <input
+          name="comment"
+          value={this.state.comment}
+          onChange={ this.handleChange }
+          className="form__input field"></input>
+          </p>
   			<button disabled={!isAbled} className={"form__register" + (!isAbled ? ' disabled' : '')} type="submit">Register</button>
     	</form>
     );
   }
 }
 
-export default RegisterPlayerForm;
+export default RegisterPlayerWithoutTeamForm;

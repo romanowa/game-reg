@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 
 const request = require('request');
 
-//import './ButtonCommands.css';
-
-class ButtonCommands extends Component {
+class ButtonPlayersWithoutTeam extends Component {
 	constructor(props) {
     super(props);
     this.state = {
@@ -21,7 +19,7 @@ class ButtonCommands extends Component {
   }
 
 	makeGamerRequest() {
-		request.get('http://localhost:3001/api/gamers?game=' + this.props.game, (err, res, body) => {
+		request.get('http://localhost:3001/api/gamers?game=', (err, res, body) => {
 	        if (err) {
 	          return console.log(err);
 	        }
@@ -56,17 +54,9 @@ class ButtonCommands extends Component {
 
     return (
     	<div>
-
-    		{this.props.game === 'starcraft' || 'quake' ?
-    			<button className="button_list" onClick={this.makeGamerRequest}>Show list of players</button>
-    			: <button className="button_list" onClick={this.makeGamerRequest}>Show list of teams</button>
-    		}
-
-
+    			<button className="button_list_players" onClick={this.makeGamerRequest}>Show list of players without team</button>
 	    	{this.state.showPopup ?
-	    		this.props.game !== 'starcraft' ?
-            listOfTeams(teams)
-	    			: this.state.gamers.map((item, index) => {
+	    			this.state.gamers.map((item, index) => {
                     return (
                       <div key={ index }>
                         <p>{item.nickname} - {item.email}</p>
@@ -81,4 +71,4 @@ class ButtonCommands extends Component {
   }
 }
 
-export default ButtonCommands;
+export default ButtonPlayersWithoutTeam;

@@ -91,20 +91,20 @@ class RegisterTeamForm extends Component {
 	makeRequest() {
     const data = this.prepareForRequest(this.makeArray())
     this.props.reg()
-      return new Promise((resolve, reject) => {
-        request.post({
-          headers: {'content-type' : 'application/json'},
-          url: 'http://localhost:3001/api/gamers',
-          body: JSON.stringify(data)
-        }, (err, res) => {
-            if (err) {
-              alert(`Something wrong: ${err}`);
-              return reject(err)
-            }
-              alert('SUCCESS!');
-              return resolve(res);
-          })
-      });
+    return new Promise((resolve, reject) => {
+      request.post({
+        headers: {'content-type' : 'application/json'},
+        url: 'http://localhost:3001/api/gamers',
+        body: JSON.stringify(data)
+      }, (err, res) => {
+          if (err) {
+            alert(`Something wrong: ${err}`);
+            return reject(err)
+          }
+            alert('SUCCESS!');
+            return resolve(res);
+        })
+    });
   }
   render() {
     const isAbled = (this.state.team &&

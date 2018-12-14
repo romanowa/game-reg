@@ -7,6 +7,8 @@ import CounterStrike from './CounterStrike.js';
 import Dota from './Dota.js';
 import Quake from './Quake.js';
 import StarCraft from './StarCraft.js';
+import ButtonRegisterPlayer from './ButtonRegisterPlayer.js';
+import ButtonPlayersWithoutTeam from './ButtonPlayersWithoutTeam.js';
 
 class App extends Component {
   render() {
@@ -15,6 +17,8 @@ class App extends Component {
         <header className="App-header">
           <img src="http://www.godeltech.com/wp-content/themes/godeltech/img/logo.svg" alt="Logo" className="logo-img"></img>
         </header>
+        <ButtonRegisterPlayer />
+        <ButtonPlayersWithoutTeam />
         <CounterStrike />
         <Dota />
         <Quake />
