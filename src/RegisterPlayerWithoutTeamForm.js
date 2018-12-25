@@ -44,31 +44,33 @@ class RegisterPlayerWithoutTeamForm extends Component {
     });
 	}
   render() {
-     const isAbled = (this.state.nickname && this.state.email && this.state.email.includes('@'));
+     const isAbled = (this.state.nickname && this.state.email && this.state.email.includes('@godeltech.com'));
     return (
     	<form onSubmit={this.makeRequest}>
         <span className="deleteMeetingClose" onClick={this.props.reg}>&times;</span>
-    		<p className="inline">Nickname
+    		<p className="inline">Nickname<span>*</span>
   			<input
           name="nickname"
           value={this.state.nickname}
           onChange={ this.handleChange }
           className="form__input field"></input>
           </p>
-  			<p className="inline">Email
+  			<p className="inline">Email<span>*</span>
   			<input
           type="email"
           name="email"
           value={this.state.email}
           onChange={ this.handleChange }
-          className="form__input field"></input>
+          className="form__input field"
+          pattern="\S+@godeltech.com$"
+          placeholder="n.surname@godeltech.com"></input>
           </p>
-        <p className="inline">Comment
+        <p className="full_width">Comment
         <input
           name="comment"
           value={this.state.comment}
           onChange={ this.handleChange }
-          className="form__input field"></input>
+          className="form__input comment"></input>
           </p>
   			<button disabled={!isAbled} className={"form__register" + (!isAbled ? ' disabled' : '')} type="submit">Register</button>
     	</form>

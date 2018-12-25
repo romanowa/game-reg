@@ -4,8 +4,8 @@ import './ButtonRegister.css';
 import Popup from './Popup.js';
 
 class ButtonRegister extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       showPopup: false
     };
@@ -19,7 +19,7 @@ class ButtonRegister extends Component {
   render() {
     return (
       <div className="center">
-      <button className="button_register" onClick={this.togglePopup.bind(this)}>{this.props.game === 'starcraft' || 'quake' ? 'Register as a player': 'Register as a team'}</button>
+      <button className="button_register" onClick={this.togglePopup.bind(this)}>{this.props.game === 'starcraft' || this.props.game === 'quake' ? 'Register as a player': 'Register as a team'}</button>
       {this.state.showPopup ?
           <Popup
             form={this.props.form}

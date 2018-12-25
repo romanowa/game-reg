@@ -53,13 +53,13 @@ class ButtonPlayersWithoutTeam extends Component {
     }
 
     return (
-    	<div>
+    	<div className="button_top">
     			<button className="button_list_players" onClick={this.makeGamerRequest}>Show list of players without team</button>
 	    	{this.state.showPopup ?
 	    			this.state.gamers.map((item, index) => {
                     return (
                       <div key={ index }>
-                        <p>{item.nickname} - {item.email}</p>
+                        <p className="players_block">{item.nickname} - {item.email}</p>
                       </div>
                      );
                   })

@@ -127,15 +127,15 @@ class RegisterTeamForm extends Component {
     return (
     	<form className="form" onSubmit={this.makeRequest}>
         <span className="deleteMeetingClose" onClick={this.props.reg}>&times;</span>
-        <p className="bold">Team title</p>
+        <p className="bold title_header">Team title<span>*</span></p>
         <input
           name="team"
           value={this.state.team}
           onChange={this.handleChange}
-          className="form__input"
+          className="form__input title"
           required></input>
         <div>
-          <p className="bold header">Team captain</p>
+          <p className="bold header">Team captain<span>*</span></p>
           <p className="inline">
             Nickname
             <input
@@ -151,11 +151,13 @@ class RegisterTeamForm extends Component {
             type="email"
             value={this.state.captainEmail}
             onChange={this.handleChange}
-            className="form__input field"></input>
+            className="form__input field"
+            pattern="\S+@godeltech.com$"
+            placeholder="n.surname@godeltech.com"></input>
           </p>
         </div>
         <div>
-          <p className="bold header">Player 1</p>
+          <p className="bold header">Player 1<span>*</span></p>
           <p className="inline">Nickname
           <input
             name="player1nickname"
@@ -169,11 +171,13 @@ class RegisterTeamForm extends Component {
             name="player1email"
             value={this.state.player1email}
             onChange={this.handleChange}
-            className="form__input field"></input>
+            className="form__input field"
+            pattern="\S+@godeltech.com$"
+            placeholder="n.surname@godeltech.com"></input>
             </p>
         </div>
         <div>
-          <p className="bold header">Player 2</p>
+          <p className="bold header">Player 2<span>*</span></p>
           <p className="inline">Nickname
           <input
             name="player2nickname"
@@ -187,11 +191,13 @@ class RegisterTeamForm extends Component {
             name="player2email"
             value={this.state.player2email}
             onChange={this.handleChange}
-            className="form__input field"></input>
+            className="form__input field"
+            pattern="\S+@godeltech.com$"
+            placeholder="n.surname@godeltech.com"></input>
             </p>
         </div>
         <div>
-          <p className="bold header">Player 3</p>
+          <p className="bold header">Player 3<span>*</span></p>
           <p className="inline">Nickname
           <input
             name="player3nickname"
@@ -205,11 +211,13 @@ class RegisterTeamForm extends Component {
             name="player3email"
             value={this.state.player3email}
             onChange={this.handleChange}
-            className="form__input field"></input>
+            className="form__input field"
+            pattern="\S+@godeltech.com$"
+            placeholder="n.surname@godeltech.com"></input>
             </p>
         </div>
         <div>
-          <p className="bold header">Player 4</p>
+          <p className="bold header">Player 4<span>*</span></p>
           <p className="inline">Nickname
           <input
             name="player4nickname"
@@ -223,7 +231,9 @@ class RegisterTeamForm extends Component {
             name="player4email"
             value={this.state.player4email}
             onChange={this.handleChange}
-            className="form__input field"></input>
+            className="form__input field"
+            pattern="\S+@godeltech.com$"
+            placeholder="n.surname@godeltech.com"></input>
             </p>
         </div>
         <div>
@@ -242,7 +252,9 @@ class RegisterTeamForm extends Component {
             name="player5email"
             value={this.state.player5email}
             onChange={this.handleChange}
-            className="form__input field"></input>
+            className="form__input field"
+            pattern="\S+@godeltech.com$"
+            placeholder="n.surname@godeltech.com"></input>
             </p>
         </div>
         <div>
@@ -260,10 +272,12 @@ class RegisterTeamForm extends Component {
             name="player6email"
             value={this.state.player6email}
             onChange={this.handleChange}
-            className="form__input field"></input>
+            className="form__input field"
+            pattern="\S+@godeltech.com$"
+            placeholder="n.surname@godeltech.com"></input>
             </p>
         </div>
-  			<button disabled={!isAbled} className="form__register" type="submit">Register</button>
+  			<button disabled={!isAbled} className={"form__register" + (!isAbled ? ' disabled' : '')} type="submit">Register</button>
     	</form>
     );
   }

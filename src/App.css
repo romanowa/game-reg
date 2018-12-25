@@ -1,7 +1,7 @@
 .game-block {
   float: left;
-  width: 24%;
-  border: 1px solid black;
+  width: 25%;
+  border: 1px solid #6DBDB7;
   box-sizing: border-box;
   position: relative;
 }
@@ -82,7 +82,7 @@
     cursor: pointer;
     position: absolute;
     right: 10px;
-    top: 5px;
+    top: -15px;
 }
 
 .form {
@@ -124,34 +124,44 @@
 
 .button_register {
   -webkit-appearance: none;
-  width: 80%;
+  width: 60%;
   border: 0;
   outline: 0;
   position: absolute;
   top: 60vh;
-  left: 10%;
+  left: 20%;
   background: #9DDCD8;
   border-radius: 100px;
-  padding: 20px 60px;
+  padding: 10px 10px;
   color: #38465E;
   text-decoration: none;
-  font-size: 1.45em;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.button_register:hover,
+.button_list:hover,
+.button_register_player:hover,
+.button_list_players:hover {
+  background: #6DBDB7;
+  cursor: pointer;
 }
 
 .button_list {
   -webkit-appearance: none;
-  width: 80%;
+  width: 60%;
   border: 0;
   outline: 0;
   position: absolute;
   top: 70vh;
-  left: 10%;
+  left: 20%;
   background: #9DDCD8;
   border-radius: 100px;
-  padding: 20px 60px;
+  padding: 10px 10px;
   color: #38465E;
   text-decoration: none;
-  font-size: 1.45em;
+  font-size: 1em;
+  font-weight: bold;
 }
 
 .team_title {
@@ -159,7 +169,12 @@
 }
 
 .team_block {
-  border: 1px solid #38465E;
+  color: #38465E;
+  border: 1px solid #6DBDB7;
+}
+
+.players_block {
+  color: #38465E;
 }
 
 .row {
@@ -179,10 +194,22 @@
 .inline {
   display: inline-block;
   width: 50%;
+  text-align: center;
 }
 
 .form__input.field {
   width: 70%;
+  margin: 0 auto;
+}
+
+.form__input.title {
+  width: 35%;
+  margin-left: 30px;
+}
+
+.form__input.comment {
+  width: 85%;
+  margin: 0 auto;
 }
 
 .center_head {
@@ -191,6 +218,7 @@
 
 .header {
   margin-bottom: -5px;
+  margin-left: 30px;
 }
 
 .disabled {
@@ -201,15 +229,28 @@
 .button_list_players {
   -webkit-appearance: none;
   margin: 10px;
-  width: 20%;
+  width: 22%;
   border: 0;
   outline: 0;
   background: #9DDCD8;
   border-radius: 100px;
-  padding: 20px 20px;
+  padding: 10px 10px;
   color: #38465E;
   text-decoration: none;
-  font-size: 1.45em;
+  font-size: 1em;
+  display: inline;
+  font-weight: bold;
 }
 
+.button_top {
+  display: contents;
+}
 
+.full_width {
+  text-align: center;
+  width: 100%;
+}
+
+.title_header {
+  margin-left: 30px;
+}

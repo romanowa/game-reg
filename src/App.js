@@ -17,8 +17,10 @@ class App extends Component {
         <header className="App-header">
           <img src="http://www.godeltech.com/wp-content/themes/godeltech/img/logo.svg" alt="Logo" className="logo-img"></img>
         </header>
-        <ButtonRegisterPlayer />
-        <ButtonPlayersWithoutTeam />
+        <div>
+          <ButtonRegisterPlayer />
+          <ButtonPlayersWithoutTeam />
+        </div>
         <CounterStrike />
         <Dota />
         <Quake />

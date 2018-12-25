@@ -17,7 +17,7 @@ class ButtonRegisterPlayer extends Component {
 
   render() {
     return (
-      <div className="center">
+      <div className="button_top">
       <button className="button_register_player" onClick={this.togglePopup.bind(this)}>Register without team</button>
       {this.state.showPopup ?
           <Popup

@@ -48,20 +48,21 @@ class RegisterPlayerForm extends Component {
     return (
     	<form onSubmit={this.makeRequest}>
         <span className="deleteMeetingClose" onClick={this.props.reg}>&times;</span>
-    		<p className="inline">Nickname
+    		<p className="inline">Nickname<span>*</span>
   			<input
           name="nickname"
           value={this.state.nickname}
           onChange={ this.handleChange }
           className="form__input field"></input>
           </p>
-  			<p className="inline">Email
+  			<p className="inline">Email<span>*</span>
   			<input
           type="email"
           name="email"
           value={this.state.email}
           onChange={ this.handleChange }
-          className="form__input field"></input>
+          className="form__input field"
+          pattern="\S+@godeltech.com$"></input>
           </p>
   			<button disabled={!isAbled} className={"form__register" + (!isAbled ? ' disabled' : '')} type="submit">Register</button>
     	</form>

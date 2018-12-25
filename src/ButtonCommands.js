@@ -45,7 +45,7 @@ class ButtonCommands extends Component {
       return teams.map((item, index) => {
                 return (
                   <div className="team_block" key={ index }>
-                    <p className="team_title">{item}</p>
+                    <p className="team_title bold">{item}</p>
                     <div className="row">
                     {listOfGamers(item)}
                     </div>
@@ -57,19 +57,19 @@ class ButtonCommands extends Component {
     return (
     	<div>
 
-    		{this.props.game === 'starcraft' || 'quake' ?
+    		{this.props.game === 'starcraft' || this.props.game === 'quake' ?
     			<button className="button_list" onClick={this.makeGamerRequest}>Show list of players</button>
     			: <button className="button_list" onClick={this.makeGamerRequest}>Show list of teams</button>
     		}
 
 
 	    	{this.state.showPopup ?
-	    		this.props.game !== 'starcraft' ?
+	    		this.props.game !== 'starcraft' && this.props.game !== 'quake' ?
             listOfTeams(teams)
 	    			: this.state.gamers.map((item, index) => {
                     return (
                       <div key={ index }>
-                        <p>{item.nickname} - {item.email}</p>
+                        <p className="players_block">{item.nickname} - {item.email}</p>
                       </div>
                      );
                   })
