@@ -22,8 +22,11 @@ app.get('/api/gamers', function(req, res) {
     Gamer.find({ game: req.query.game }).then(eachOne => {
     res.json(eachOne);
     });
-  } else {
-    Gamer.find({ game: null }).then(eachOne => {
+  }
+
+  if (req.query.freeForTeam) {
+    console.log('===HERE=====')
+    Gamer.find({ freeForTeam: true }).then(eachOne => {
     res.json(eachOne);
     });
   }

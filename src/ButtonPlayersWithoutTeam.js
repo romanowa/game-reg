@@ -19,11 +19,12 @@ class ButtonPlayersWithoutTeam extends Component {
   }
 
 	makeGamerRequest() {
-		request.get('http://localhost:3001/api/gamers?game=', (err, res, body) => {
+		request.get('http://localhost:3001/api/gamers?freeForTeam=true', (err, res, body) => {
 	        if (err) {
 	          return console.log(err);
 	        }
 	        this.setState({ gamers: JSON.parse(res.body) })
+          console.log(this.state.gamers)
 	      });
 		this.togglePopup()
 	}
@@ -53,7 +54,7 @@ class ButtonPlayersWithoutTeam extends Component {
     }
 
     return (
-    	<div className="button_top">
+    	<div className="flex-item">
     			<button className="button_list_players" onClick={this.makeGamerRequest}>Show list of players without team</button>
 	    	{this.state.showPopup ?
 	    			this.state.gamers.map((item, index) => {

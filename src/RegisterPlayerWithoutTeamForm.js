@@ -9,6 +9,7 @@ class RegisterPlayerWithoutTeamForm extends Component {
       nickname: null,
       email: null,
       comment: null,
+      game: null,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -31,6 +32,7 @@ class RegisterPlayerWithoutTeamForm extends Component {
           nickname: this.state.nickname,
           email: this.state.email,
           comment: this.state.comment,
+          game: this.state.game,
           freeForTeam: true,
         })
       }, (err, res) => {
@@ -44,7 +46,7 @@ class RegisterPlayerWithoutTeamForm extends Component {
     });
 	}
   render() {
-     const isAbled = (this.state.nickname && this.state.email && this.state.email.includes('@godeltech.com'));
+     const isAbled = (this.state.nickname && this.state.email && this.state.game && this.state.email.includes('@godeltech.com'));
     return (
     	<form onSubmit={this.makeRequest}>
         <span className="deleteMeetingClose" onClick={this.props.reg}>&times;</span>
@@ -65,12 +67,24 @@ class RegisterPlayerWithoutTeamForm extends Component {
           pattern="\S+@godeltech.com$"
           placeholder="n.surname@godeltech.com"></input>
           </p>
+        <p className="inline">Game<span>*</span>
+        <select
+          className="form__input field select_field"
+          value={this.state.game}
+          onChange={this.handleChange}
+          name="game">
+          <option value="" disabled selected>Choose game</option>
+          <option value="cs">CounterStrike</option>
+          <option value="dota">Dota</option>
+        </select>
+        </p>
         <p className="full_width">Comment
         <input
           name="comment"
           value={this.state.comment}
           onChange={ this.handleChange }
-          className="form__input comment"></input>
+          className="form__input comment"
+          placeholder="Description of playthrough, etc."></input>
           </p>
   			<button disabled={!isAbled} className={"form__register" + (!isAbled ? ' disabled' : '')} type="submit">Register</button>
     	</form>

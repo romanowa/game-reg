@@ -15,12 +15,12 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src="http://www.godeltech.com/wp-content/themes/godeltech/img/logo.svg" alt="Logo" className="logo-img"></img>
+          <div className="flex-container">
+            <ButtonRegisterPlayer />
+            <ButtonPlayersWithoutTeam />
+            <img src="http://www.godeltech.com/wp-content/themes/godeltech/img/logo.svg" alt="Logo" className="logo_img flex-item"></img>
+          </div>
         </header>
-        <div>
-          <ButtonRegisterPlayer />
-          <ButtonPlayersWithoutTeam />
-        </div>
         <CounterStrike />
         <Dota />
         <Quake />

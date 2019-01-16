@@ -1,3 +1,7 @@
+.top_block {
+  padding: auto 0;
+}
+
 .game-block {
   float: left;
   width: 25%;
@@ -82,7 +86,7 @@
     cursor: pointer;
     position: absolute;
     right: 10px;
-    top: -15px;
+    top: -5px;
 }
 
 .form {
@@ -94,7 +98,6 @@
     display: block;
     width: 35%;
     padding: 20px;
-    -webkit-appearance: none;
     border: 0;
     outline: 0;
     transition: 0.3s;
@@ -202,6 +205,10 @@
   margin: 0 auto;
 }
 
+.form__input.field.select_field {
+  width: 78%;
+}
+
 .form__input.title {
   width: 35%;
   margin-left: 30px;
@@ -229,7 +236,6 @@
 .button_list_players {
   -webkit-appearance: none;
   margin: 10px;
-  width: 22%;
   border: 0;
   outline: 0;
   background: #9DDCD8;
@@ -253,4 +259,29 @@
 
 .title_header {
   margin-left: 30px;
+}
+
+.float-left {
+  float: left;
+  display: contents;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.flex-item {
+  width: 100%;
+  flex: 1;
+}
+
+.flex-item:nth-of-type(2){
+    flex: 6.5;
+}
+
+.logo_img {
+  margin-right: 10px;
 }
