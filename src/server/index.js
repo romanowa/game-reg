@@ -20,27 +20,14 @@ app.get('/', function(req, res) {
 app.get('/api/gamers', function(req, res) {
   if (req.query.game) {
     Gamer.find({ game: req.query.game }).then(eachOne => {
-    res.json(eachOne);
+      res.json(eachOne);
     });
-  }
-
-  if (req.query.freeForTeam) {
-    console.log('===HERE=====')
+  } else if (req.query.freeForTeam) {
     Gamer.find({ freeForTeam: true }).then(eachOne => {
-    res.json(eachOne);
+      res.json(eachOne);
     });
   }
-
-
-  });
-
-
-app.get('/api/teams', function(req, res) {
-  Team.find({ game: req.query.game}).then(eachOne => {
-    console.log('£££££', Array.isArray(eachOne))
-    res.send(eachOne);
-    })
-  })
+});
 
 app.post('/api/gamers', function(req, res) {
   console.log('$-$-$-$-', req.body)

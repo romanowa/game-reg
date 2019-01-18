@@ -24,7 +24,6 @@ class ButtonPlayersWithoutTeam extends Component {
 	          return console.log(err);
 	        }
 	        this.setState({ gamers: JSON.parse(res.body) })
-          console.log(this.state.gamers)
 	      });
 		this.togglePopup()
 	}
