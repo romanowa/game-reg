@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ButtonRegister from './ButtonRegister.js';
 import ButtonCommands from './ButtonCommands.js';
+import ButtonRules from './ButtonRules.js';
 import RegisterTeamForm from './RegisterTeamForm.js';
 
 const request = require('request');
@@ -20,6 +21,7 @@ class Quake extends Component {
           <div className="quake"></div>
           <ButtonRegister form="player" game="quake"/>
           <ButtonCommands game="quake"/>
+          <ButtonRules game="Quake"/>
       </div>
     );
   }

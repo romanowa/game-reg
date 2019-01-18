@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ButtonRegister from './ButtonRegister.js';
 import ButtonCommands from './ButtonCommands.js';
 import RegisterTeamForm from './RegisterTeamForm.js';
+import ButtonRules from './ButtonRules.js';
 
 const request = require('request');
 
@@ -18,6 +19,7 @@ class CounterStrike extends Component {
           <div className="cs16"></div>
           <ButtonRegister form="team" game="counterstrike"/>
           <ButtonCommands game="counterstrike"/>
+          <ButtonRules game="Counter-Strike"/>
         </div>
     );
   }
