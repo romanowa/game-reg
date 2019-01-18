@@ -7,7 +7,8 @@ class RegisterPlayerForm extends Component {
     super(props);
     this.state = {
       nickname: null,
-      email: null
+      email: null,
+      race: null
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -32,6 +33,7 @@ class RegisterPlayerForm extends Component {
           email: this.state.email,
           captain: false,
           freeForTeam: false,
+          race: this.state.race,
         })
       }, (err, res) => {
           if (err) {
@@ -44,7 +46,7 @@ class RegisterPlayerForm extends Component {
     });
 	}
   render() {
-    const isAbled = (this.state.nickname && this.state.email && this.state.email.includes('@'));
+    const isAbled = (this.state.nickname && this.state.race && this.state.email && this.state.email.includes('@'));
     return (
     	<form onSubmit={this.makeRequest}>
         <span className="deleteMeetingClose" onClick={this.props.reg}>&times;</span>
@@ -64,6 +66,22 @@ class RegisterPlayerForm extends Component {
           className="form__input field"
           pattern="\S+@godeltech.com$"></input>
           </p>
+        {this.props.game === 'starcraft' ?
+          <p className="inline">Race<span>*</span>
+            <select
+              className="form__input field select_field"
+              value={this.state.race}
+              onChange={this.handleChange}
+              name="race">
+              <option value="" disabled selected>Choose race</option>
+              <option value="Terran">Terran</option>
+              <option value="Protoss">Protoss</option>
+              <option value="Zerg">Zerg</option>
+              <option value="Random race">Random race</option>
+            </select>
+          </p>
+          : null
+        }
   			<button disabled={!isAbled} className={"form__register" + (!isAbled ? ' disabled' : '')} type="submit">Register</button>
     	</form>
     );

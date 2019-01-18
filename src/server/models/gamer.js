@@ -29,6 +29,10 @@ const gamerSchema = new Schema({
     type: mongoose.Schema.Types.Mixed,
     required: false,
   },
+  race: {
+    type: mongoose.Schema.Types.Mixed,
+    required: false,
+  }
 })
 const Gamer = mongoose.model('Gamer', gamerSchema);
 module.exports = Gamer;

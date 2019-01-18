@@ -42,7 +42,8 @@ app.post('/api/gamers', function(req, res) {
       nickname: req.body.nickname,
       email: req.body.email,
       captain: req.body.captain,
-      freeForTeam: req.body.freeForTeam
+      freeForTeam: req.body.freeForTeam,
+      race: req.body.race,
     })
     .then(result => {
       res.json(result)
