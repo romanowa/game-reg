@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import RegisterPlayerForm from './RegisterPlayerForm.js';
 import RegisterTeamForm from './RegisterTeamForm.js';
 import RegisterPlayerWithoutTeamForm from './RegisterPlayerWithoutTeamForm.js';
+import ShowList from './ShowList.js';
 
 class Popup extends Component {
   render() {
@@ -19,6 +20,10 @@ class Popup extends Component {
 
         {form === 'team' &&
           <RegisterTeamForm reg={this.props.closePopup} game={this.props.game}/>
+        }
+
+        {form === 'list' &&
+          <ShowList items={this.props.items} game={this.props.game} reg={this.props.closePopup}/>
         }
         </div>
       </div>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Popup from './Popup.js';
 
 const request = require('request');
 
@@ -62,23 +63,19 @@ class ButtonCommands extends Component {
     			: <button className="button_list" onClick={this.makeGamerRequest}>Show list of teams</button>
     		}
 
-
 	    	{this.state.showPopup ?
-	    		this.props.game !== 'starcraft' && this.props.game !== 'quake' ?
-            listOfTeams(teams)
-	    			: this.state.gamers.map((item, index) => {
-                    return (
-                      <div key={ index }>
-                        <p className="players_block">{item.nickname} - {item.email}</p>
-                      </div>
-                     );
-                  })
-	          : null
+            <Popup
+              form="list"
+              items={this.state.gamers}
+              game={this.props.game}
+              closePopup={this.togglePopup.bind(this)}
+            />
+            : null
 	        }
-
         </div>
     );
   }
 }
 
 export default ButtonCommands;
+
