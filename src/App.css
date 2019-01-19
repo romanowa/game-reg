@@ -197,6 +197,7 @@
 .team_block {
   color: #38465E;
   border: 1px solid #6DBDB7;
+  padding-left: 10px;
 }
 
 .players_block {
@@ -209,6 +210,7 @@
 .list_popup {
   background-color: #e1f4f3;
   height: 100%;
+  position: relative;
 }
 
 .row {
@@ -313,17 +315,33 @@
     flex: 6.5;
 }
 
+@media (max-width: 1800px) {
+  .flex-item:nth-of-type(2){
+    flex: 4;
+  }
+  .button_register {
+    top: 50vh;
+  }
+  .button_list {
+    top: 60vh;
+  }
+  .button_rules {
+    top: 70vh;
+  }
+}
+
 .logo_img {
   margin-right: 10px;
 }
 
 .no-players,
 .no-teams {
-  /*margin: 20vh auto;*/
   text-align: center;
   border-radius: 10px;
   background-color: #9DDCD8;
   padding: 10px 0;
   color: #38465E;
   font-weight: bold;
+  position: relative;
+  top: 40%;
 }

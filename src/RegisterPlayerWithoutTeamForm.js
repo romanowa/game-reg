@@ -74,8 +74,8 @@ class RegisterPlayerWithoutTeamForm extends Component {
           onChange={this.handleChange}
           name="game">
           <option value="" disabled selected>Choose game</option>
-          <option value="cs">CounterStrike</option>
-          <option value="dota">Dota</option>
+          <option value="cs">Counter-Strike</option>
+          <option value="dota">Dota2</option>
         </select>
         </p>
         <p className="full_width">Comment

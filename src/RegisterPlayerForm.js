@@ -64,7 +64,8 @@ class RegisterPlayerForm extends Component {
           value={this.state.email}
           onChange={ this.handleChange }
           className="form__input field"
-          pattern="\S+@godeltech.com$"></input>
+          pattern="\S+@godeltech.com$"
+          placeholder="n.surname@godeltech.com"></input>
           </p>
         {this.props.game === 'starcraft' ?
           <p className="inline">Race<span>*</span>
