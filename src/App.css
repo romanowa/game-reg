@@ -87,6 +87,7 @@
     position: absolute;
     right: 10px;
     top: -10px;
+    z-index: 9999;
 }
 
 .form {
@@ -208,9 +209,11 @@
 }
 
 .list_popup {
-  background-color: #e1f4f3;
-  height: 100%;
   position: relative;
+}
+
+.popup_inner.list_inner {
+  background-color: #e1f4f3;
 }
 
 .row {

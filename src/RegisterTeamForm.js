@@ -1,6 +1,7 @@
 /* eslint no-unused-expressions: off */
 
 import React, { Component } from 'react';
+import { withAlert } from 'react-alert';
 
 const request = require('request');
 const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
@@ -42,7 +43,6 @@ class RegisterTeamForm extends Component {
       item.team = this.state.team;
       item.freeForTeam = false
     })
-    console.log('///////////////', array)
     return array
   }
 
@@ -96,10 +96,11 @@ class RegisterTeamForm extends Component {
         body: JSON.stringify(data)
       }, (err, res) => {
           if (err) {
-            alert(`Something wrong: ${err}`);
+            this.props.alert.show('Something is wrong:(', { type: 'error' })
+            console.log(err)
             return reject(err)
           }
-            alert('SUCCESS!');
+            this.props.alert.show('Thanks for registration!', { type: 'success' })
             return resolve(res);
         })
     });
@@ -281,4 +282,4 @@ class RegisterTeamForm extends Component {
   }
 }
 
-export default RegisterTeamForm;
+export default withAlert(RegisterTeamForm);

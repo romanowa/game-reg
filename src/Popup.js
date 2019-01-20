@@ -9,7 +9,7 @@ class Popup extends Component {
     const form = this.props.form;
     return (
       <div className='popup'>
-        <div className='popup_inner'>
+        <div className={"popup_inner " + (form === 'list' && 'list_inner')}>
         {form === 'player' &&
           <RegisterPlayerForm reg={this.props.closePopup} game={this.props.game}/>
         }

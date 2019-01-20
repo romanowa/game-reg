@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Popup from './Popup.js';
+import { withAlert } from 'react-alert';
 
 const request = require('request');
 const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
@@ -7,9 +9,9 @@ class RegisterPlayerForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      nickname: null,
-      email: null,
-      race: null
+      nickname: '',
+      email: '',
+      race: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -38,16 +40,19 @@ class RegisterPlayerForm extends Component {
         })
       }, (err, res) => {
           if (err) {
-            alert(`Something wrong: ${err}`);
+            this.props.alert.show('Something is wrong:(', { type: 'error' })
+            console.log(err)
             return reject(err)
           }
-            alert('SUCCESS!');
+            this.props.alert.show('Thanks for registration!', { type: 'success' })
             return resolve(res);
         })
     });
 	}
   render() {
-    const isAbled = (this.state.nickname && this.state.race && this.state.email && this.state.email.includes('@'));
+    const isAbled = this.props.game === 'starcraft' ? 
+          (this.state.nickname && this.state.race && this.state.email && this.state.email.includes('@'))
+          : (this.state.nickname && this.state.email && this.state.email.includes('@'));
     return (
     	<form onSubmit={this.makeRequest}>
         <span className="deleteMeetingClose" onClick={this.props.reg}>&times;</span>
@@ -90,4 +95,4 @@ class RegisterPlayerForm extends Component {
   }
 }
 
-export default RegisterPlayerForm;
+export default withAlert(RegisterPlayerForm);

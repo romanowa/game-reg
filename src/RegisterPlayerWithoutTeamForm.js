@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withAlert } from 'react-alert';
 
 const request = require('request');
 const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
@@ -31,17 +32,18 @@ class RegisterPlayerWithoutTeamForm extends Component {
         url: `${backendUrl}/api/gamers`,
         body: JSON.stringify({
           nickname: this.state.nickname,
-          email: this.state.email,
+          email: this.state.email, 
           comment: this.state.comment,
           game: this.state.game,
           freeForTeam: true,
         })
       }, (err, res) => {
           if (err) {
-            alert(`Something wrong: ${err}`);
+            this.props.alert.show('Something is wrong:(', { type: 'error' })
+            console.log(err)
             return reject(err)
           }
-            alert('SUCCESS!');
+            this.props.alert.show('Thanks for registration!', { type: 'success' })
             return resolve(res);
         })
     });
@@ -93,4 +95,4 @@ class RegisterPlayerWithoutTeamForm extends Component {
   }
 }
 
-export default RegisterPlayerWithoutTeamForm;
+export default withAlert(RegisterPlayerWithoutTeamForm);
