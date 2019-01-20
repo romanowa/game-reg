@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-
-import './ButtonRegister.css';
 import Popup from './Popup.js';
 
 class ButtonRegister extends Component {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 const request = require('request');
+const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
 
 class RegisterPlayerWithoutTeamForm extends Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class RegisterPlayerWithoutTeamForm extends Component {
     return new Promise((resolve, reject) => {
       request.post({
         headers: {'content-type' : 'application/json'},
-        url: 'http://localhost:3001/api/gamers',
+        url: `${backendUrl}/api/gamers`,
         body: JSON.stringify({
           nickname: this.state.nickname,
           email: this.state.email,
@@ -74,8 +75,8 @@ class RegisterPlayerWithoutTeamForm extends Component {
           onChange={this.handleChange}
           name="game">
           <option value="" disabled selected>Choose game</option>
-          <option value="cs">Counter-Strike</option>
-          <option value="dota">Dota2</option>
+          <option value="Counter-Strike">Counter-Strike</option>
+          <option value="Dota2">Dota2</option>
         </select>
         </p>
         <p className="full_width">Comment

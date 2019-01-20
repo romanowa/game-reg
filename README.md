@@ -7,7 +7,7 @@ Prerequisites:
 
 In the root directory:
 - yarn
-- npm start
+- npm start (NOTE: default path to backend server - http://localhost:3001, to specify other path: REACT_APP_BACKEND_URL=http://kokoko npm start)
 
 In src/server directory:
 - yarn

@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 
 class ShowList extends Component {
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		const teams = [...new Set(this.props.items.map(item => item.team))];
+		const games = [...new Set(this.props.items.map(item => item.game))];
 
 		const listOfGamers = (item) => {
 	      return this.props.items.map((itemG, index) => {
 	        if (itemG.team === item) {
 	          return <p className="column" key={index}>{itemG.nickname} {itemG.captain && '(captain)'}</p>
+	        }
+	      })
+	    }
+
+	    const listOfGamersWoTeam = (item) => {
+	      return this.props.items.map((itemG, index) => {
+	        if (itemG.game === item) {
+	          return <p className="column" key={index}>{itemG.nickname} - {itemG.email}</p>
 	        }
 	      })
 	    }
@@ -29,10 +34,31 @@ class ShowList extends Component {
 	              })
 	    }
 
+	    const listOfGames = (games) => {
+	    	return (
+	    		<table className="wo-team">
+	    			<tr>
+	    				<th>{games[0]}</th>
+	    				<th>{games[1]}</th>
+	    			</tr>
+	    			<tr>
+	    				<td>{listOfGamersWoTeam(games[0])}</td>
+	    				<td>{listOfGamersWoTeam(games[1])}</td>
+	    			</tr>
+	    		</table>
+
+	    	)
+
+
+	    	
+	    }
+
 	    return (
 	        <div className="list_popup">
 	        	<span className="deleteMeetingClose" onClick={this.props.reg}>&times;</span>
 	        	{this.props.items.length ?
+	        		this.props.game === 'player-wo-team' ?
+	        		listOfGames(games) :
 	        		this.props.game !== 'starcraft' && this.props.game !== 'quake' ?
 		            listOfTeams(teams)
 		            : this.props.items.map((item, index) => {
@@ -42,7 +68,7 @@ class ShowList extends Component {
 		                      </div>
 		                     );
 		                  })
-	        		: this.props.game === 'starcraft' || this.props.game === 'quake' ?
+	        		: this.props.game === 'starcraft' || this.props.game === 'quake' || this.props.game === 'player-wo-team' ?
 	        		   <div className="no-players">There are no registered players!</div>
 	        		   : <div className="no-teams">There are no registered teams!</div>
 	        		}

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import Popup from './Popup.js';
 
 const request = require('request');
+const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
 
 class ButtonPlayersWithoutTeam extends Component {
 	constructor(props) {
@@ -19,7 +21,7 @@ class ButtonPlayersWithoutTeam extends Component {
   }
 
 	makeGamerRequest() {
-		request.get('http://localhost:3001/api/gamers?freeForTeam=true', (err, res, body) => {
+		request.get(`${backendUrl}/api/gamers?freeForTeam=true`, (err, res, body) => {
 	        if (err) {
 	          return console.log(err);
 	        }
@@ -29,43 +31,18 @@ class ButtonPlayersWithoutTeam extends Component {
 	}
 
   render() {
-    const teams = [...new Set(this.state.gamers.map(item => item.team))];
-
-    const listOfGamers = (item) => {
-      return this.state.gamers.map((itemG, index) => {
-        if (itemG.team === item) {
-          return <p className="column" key={index}>{itemG.nickname} {itemG.captain && '(captain)'}</p>
-        }
-      })
-    }
-
-    const listOfTeams = (teams) => {
-      return teams.map((item, index) => {
-                return (
-                  <div className="team_block" key={ index }>
-                    <p className="team_title">{item}</p>
-                    <div className="row">
-                    {listOfGamers(item)}
-                    </div>
-                  </div>
-                 );
-              })
-    }
-
     return (
     	<div className="flex-item">
     			<button className="button_list_players" onClick={this.makeGamerRequest}>Show list of players without team</button>
 	    	{this.state.showPopup ?
-	    			this.state.gamers.map((item, index) => {
-                    return (
-                      <div key={ index }>
-                        <p className="players_block">{item.nickname} - {item.email}</p>
-                      </div>
-                     );
-                  })
-	          : null
-	        }
-
+            <Popup
+              form="list"
+              items={this.state.gamers}
+              game="player-wo-team"
+              closePopup={this.togglePopup.bind(this)}
+            />
+            : null
+          }
         </div>
     );
   }

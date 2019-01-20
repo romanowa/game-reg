@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 class ButtonRules extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     let link;
     switch(this.props.game) {

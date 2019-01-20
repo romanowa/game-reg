@@ -1,11 +1,9 @@
 /* eslint no-unused-expressions: off */
 
 import React, { Component } from 'react';
-import Popup from './Popup.js';
-
 
 const request = require('request');
-
+const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
 
 class RegisterTeamForm extends Component {
   constructor(props) {
@@ -40,8 +38,8 @@ class RegisterTeamForm extends Component {
   }
   prepareForRequest(array) {
     array.forEach(item => {
-      item.game = this.props.game,
-      item.team = this.state.team,
+      item.game = this.props.game;
+      item.team = this.state.team;
       item.freeForTeam = false
     })
     console.log('///////////////', array)
@@ -94,7 +92,7 @@ class RegisterTeamForm extends Component {
     return new Promise((resolve, reject) => {
       request.post({
         headers: {'content-type' : 'application/json'},
-        url: 'http://localhost:3001/api/gamers',
+        url: `${backendUrl}/api/gamers`,
         body: JSON.stringify(data)
       }, (err, res) => {
           if (err) {

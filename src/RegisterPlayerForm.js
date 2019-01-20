@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 const request = require('request');
+const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
 
 class RegisterPlayerForm extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class RegisterPlayerForm extends Component {
     return new Promise((resolve, reject) => {
       request.post({
         headers: {'content-type' : 'application/json'},
-        url: 'http://localhost:3001/api/gamers',
+        url: `${backendUrl}/api/gamers`,
         body: JSON.stringify({
           game: this.props.game,
           nickname: this.state.nickname,

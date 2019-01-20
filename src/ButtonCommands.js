@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import Popup from './Popup.js';
 
 const request = require('request');
-
-//import './ButtonCommands.css';
+const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
 
 class ButtonCommands extends Component {
 	constructor(props) {
@@ -22,7 +21,7 @@ class ButtonCommands extends Component {
   }
 
 	makeGamerRequest() {
-		request.get('http://localhost:3001/api/gamers?game=' + this.props.game, (err, res, body) => {
+		request.get(`${backendUrl}/api/gamers?game=` + this.props.game, (err, res, body) => {
 	        if (err) {
 	          return console.log(err);
 	        }

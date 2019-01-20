@@ -86,7 +86,7 @@
     cursor: pointer;
     position: absolute;
     right: 10px;
-    top: -5px;
+    top: -10px;
 }
 
 .form {
@@ -344,4 +344,26 @@
   font-weight: bold;
   position: relative;
   top: 40%;
+}
+
+.wo-team {
+  width: 100%;
+  position: relative;
+  top: 35px;
+}
+
+.wo-team,
+.wo-team th,
+.wo-team td {
+  border: 1px solid #6DBDB7;
+  border-collapse: collapse;
+}
+
+.wo-team th,
+.wo-team td {
+  padding-left: 10px;
+}
+
+.wo-team td {
+  vertical-align: baseline;
 }
