@@ -340,7 +340,6 @@
 .no-players,
 .no-teams {
   text-align: center;
-  border-radius: 10px;
   background-color: #9DDCD8;
   padding: 10px 0;
   color: #38465E;
@@ -369,4 +368,5 @@
 
 .wo-team td {
   vertical-align: baseline;
+  width: 50%;
 }

@@ -8,7 +8,7 @@ class ShowList extends Component {
 		const listOfGamers = (item) => {
 	      return this.props.items.map((itemG, index) => {
 	        if (itemG.team === item) {
-	          return <p className="column" key={index}>{itemG.nickname} {itemG.captain && '(captain)'}</p>
+	          return <p className="column" key={index}>{itemG.nickname} {itemG.captain && '(captain)'} {itemG.email && `- ${itemG.email}`}</p>
 	        }
 	      })
 	    }
@@ -50,7 +50,7 @@ class ShowList extends Component {
 	    	)
 
 
-	    	
+
 	    }
 
 	    return (
@@ -64,7 +64,7 @@ class ShowList extends Component {
 		            : this.props.items.map((item, index) => {
 		                    return (
 		                      <div key={ index }>
-		                        <p className="players_block">{item.nickname} - {item.email} ({item.race})</p>
+		                        <p className="players_block">{item.nickname} - {item.email} {item.race && `(${item.race})`}</p>
 		                      </div>
 		                     );
 		                  })
