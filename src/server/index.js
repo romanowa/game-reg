@@ -34,23 +34,19 @@ app.get('/api/gamers', function(req, res) {
 });
 
 app.post('/api/gamers', function(req, res) {
-  console.log(req)
   if (Array.isArray(req.body)) {
     Gamer.find({ game: req.body[0].game, team: req.body[0].team })
       .then(gamers => {
         const teams = [...new Set(gamers.map(item => item.team))];
         if (teams.includes(req.body[0].team)) {
-          console.log('--------------------- OOOPPPSSSSSSS')
           return false
         }
         return true
       })
       .then((ress) => {
         if (!ress) {
-          console.log('&&&&&&&')
           res.send({ error: 'INVALID_TEAM_TITLE' })
         } else {
-          console.log('------ ELSEEEEEEE')
           Gamer.insertMany(req.body)
             .then(result => {
               res.json(result)

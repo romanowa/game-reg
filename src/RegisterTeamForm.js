@@ -32,6 +32,7 @@ class RegisterTeamForm extends Component {
     this.prepareForRequest = this.prepareForRequest.bind(this);
     this.makeArray = this.makeArray.bind(this)
   }
+
   handleChange({ target }) {
     this.setState({
       [target.name]: target.value
@@ -40,7 +41,7 @@ class RegisterTeamForm extends Component {
   prepareForRequest(array) {
     array.forEach(item => {
       item.game = this.props.game;
-      item.team = this.state.team;
+      item.team = this.state.team.toLowerCase();
       item.freeForTeam = false
     })
     return array
@@ -95,17 +96,15 @@ class RegisterTeamForm extends Component {
         url: `${backendUrl}/api/gamers`,
         body: JSON.stringify(data)
       }, (err, res) => {
-        console.log('----- ERR', err)
-        console.log('++++++ RES')
           if (err) {
             this.props.alert.show('Something is wrong:(', { type: 'error' })
             console.log(err)
             return reject(err)
           }
           if (JSON.parse(res.body).error && JSON.parse(res.body).error === 'INVALID_TEAM_TITLE') {
-            this.props.alert.show('INVALID_TEAM_TITLE', { type: 'error' })
+            this.props.alert.show('Team with this title is already registered, please change', { type: 'error' })
             console.log(err)
-            return reject(err)
+            return reject(res)
           }
             this.props.alert.show('Thanks for registration!', { type: 'success' })
             return resolve(res);
