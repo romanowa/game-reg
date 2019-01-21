@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Popup from './Popup.js';
 import { withAlert } from 'react-alert';
 
 const request = require('request');

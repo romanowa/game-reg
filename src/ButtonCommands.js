@@ -31,29 +31,6 @@ class ButtonCommands extends Component {
 	}
 
   render() {
-    const teams = [...new Set(this.state.gamers.map(item => item.team))];
-
-    const listOfGamers = (item) => {
-      return this.state.gamers.map((itemG, index) => {
-        if (itemG.team === item) {
-          return <p className="column" key={index}>{itemG.nickname} {itemG.captain && '(captain)'}</p>
-        }
-      })
-    }
-
-    const listOfTeams = (teams) => {
-      return teams.map((item, index) => {
-                return (
-                  <div className="team_block" key={ index }>
-                    <p className="team_title bold">{item}</p>
-                    <div className="row">
-                    {listOfGamers(item)}
-                    </div>
-                  </div>
-                 );
-              })
-    }
-
     return (
     	<div>
 
