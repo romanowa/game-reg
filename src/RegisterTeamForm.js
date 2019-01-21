@@ -95,8 +95,15 @@ class RegisterTeamForm extends Component {
         url: `${backendUrl}/api/gamers`,
         body: JSON.stringify(data)
       }, (err, res) => {
+        console.log('----- ERR', err)
+        console.log('++++++ RES')
           if (err) {
             this.props.alert.show('Something is wrong:(', { type: 'error' })
+            console.log(err)
+            return reject(err)
+          }
+          if (JSON.parse(res.body).error && JSON.parse(res.body).error === 'INVALID_TEAM_TITLE') {
+            this.props.alert.show('INVALID_TEAM_TITLE', { type: 'error' })
             console.log(err)
             return reject(err)
           }
