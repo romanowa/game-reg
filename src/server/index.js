@@ -44,6 +44,7 @@ app.post('/api/gamers', function(req, res) {
       captain: req.body.captain,
       freeForTeam: req.body.freeForTeam,
       race: req.body.race,
+      comment: req.body.comment,
     })
     .then(result => {
       res.json(result)

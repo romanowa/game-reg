@@ -359,14 +359,23 @@
 .wo-team td {
   border: 1px solid #6DBDB7;
   border-collapse: collapse;
+  border-bottom: 0;
 }
 
-.wo-team th,
-.wo-team td {
+.wo-team th {
   padding-left: 10px;
 }
 
 .wo-team td {
   vertical-align: baseline;
   width: 50%;
+}
+
+.gamer-wo-team-item {
+  padding-left: 10px;
+}
+
+.gamer-wo-team-item {
+  border-bottom: 1px solid #6DBDB7;
+  border-collapse: collapse;
 }

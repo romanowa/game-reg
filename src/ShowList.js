@@ -13,14 +13,6 @@ class ShowList extends Component {
 	      })
 	    }
 
-	    const listOfGamersWoTeam = (item) => {
-	      return this.props.items.map((itemG, index) => {
-	        if (itemG.game === item) {
-	          return <p className="column" key={index}>{itemG.nickname} - {itemG.email}</p>
-	        }
-	      })
-	    }
-
 	    const listOfTeams = (teams) => {
 	      return teams.map((item, index) => {
 	                return (
@@ -34,23 +26,34 @@ class ShowList extends Component {
 	              })
 	    }
 
+	    const listOfGamersWoTeam = (item) => {
+	      return this.props.items.map((itemG, index) => {
+	        if (itemG.game === item) {
+	          return <div className="gamer-wo-team-item" key={index}>
+	          			<p>{itemG.nickname} - {itemG.email}</p>
+	          			<p>Comment: {itemG.comment || '-'}</p>
+	          		</div>
+	        }
+	      })
+	    }
+
 	    const listOfGames = (games) => {
 	    	return (
 	    		<table className="wo-team">
-	    			<tr>
-	    				<th>{games[0]}</th>
-	    				<th>{games[1]}</th>
-	    			</tr>
-	    			<tr>
-	    				<td>{listOfGamersWoTeam(games[0])}</td>
-	    				<td>{listOfGamersWoTeam(games[1])}</td>
-	    			</tr>
+	    			<thead>
+		    			<tr>
+		    				<th>{games[0]}</th>
+		    				<th>{games[1]}</th>
+		    			</tr>
+		    		</thead>
+		    		<tbody>
+		    			<tr>
+		    				<td>{listOfGamersWoTeam(games[0])}</td>
+		    				<td>{listOfGamersWoTeam(games[1])}</td>
+		    			</tr>
+		    		</tbody>
 	    		</table>
-
 	    	)
-
-
-
 	    }
 
 	    return (

@@ -8,10 +8,10 @@ class RegisterPlayerWithoutTeamForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      nickname: null,
-      email: null,
-      comment: null,
-      game: null,
+      nickname: '',
+      email: '',
+      comment: '',
+      game: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -32,7 +32,7 @@ class RegisterPlayerWithoutTeamForm extends Component {
         url: `${backendUrl}/api/gamers`,
         body: JSON.stringify({
           nickname: this.state.nickname,
-          email: this.state.email, 
+          email: this.state.email,
           comment: this.state.comment,
           game: this.state.game,
           freeForTeam: true,
@@ -76,7 +76,7 @@ class RegisterPlayerWithoutTeamForm extends Component {
           value={this.state.game}
           onChange={this.handleChange}
           name="game">
-          <option value="" disabled selected>Choose game</option>
+          <option value="" selected disabled>Choose game</option>
           <option value="Counter-Strike">Counter-Strike</option>
           <option value="Dota2">Dota2</option>
         </select>
