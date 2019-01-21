@@ -18,7 +18,11 @@ app.get('/', function(req, res) {
 });
 
 app.get('/api/gamers', function(req, res) {
-  if (req.query.game) {
+  if (req.query.game && req.query.team) {
+    Gamer.find({ game: req.query.game, team: req.query.team }).then(eachOne => {
+      res.json(eachOne);
+    });
+  } else if (req.query.game) {
     Gamer.find({ game: req.query.game }).then(eachOne => {
       res.json(eachOne);
     });
@@ -30,12 +34,25 @@ app.get('/api/gamers', function(req, res) {
 });
 
 app.post('/api/gamers', function(req, res) {
-  console.log('$-$-$-$-', req.body)
   if (Array.isArray(req.body)) {
-    Gamer.insertMany( req.body )
-    .then(result => {
-      res.json(result)
-    })
+    Gamer.find({ game: req.body[0].game, team: req.body[0].team })
+      .then(gamers => {
+        const teams = [...new Set(gamers.map(item => item.team))];
+        if (teams.includes(req.body[0].team)) {
+          return false
+        }
+        return true
+      })
+      .then((ress) => {
+        if (!ress) {
+          res.send({ error: 'INVALID_TEAM_TITLE' })
+        } else {
+          Gamer.insertMany(req.body)
+            .then(result => {
+              res.json(result)
+          })
+        }
+      })
   } else {
     Gamer.create({
       game: req.body.game,
