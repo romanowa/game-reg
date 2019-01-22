@@ -18,6 +18,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/api/gamers', function(req, res) {
+  console.log(`Getting gamers from database for query parameters: `, req.query)
   if (req.query.game && req.query.team) {
     Gamer.find({ game: req.query.game, team: req.query.team }).then(eachOne => {
       res.json(eachOne);
@@ -35,10 +36,12 @@ app.get('/api/gamers', function(req, res) {
 
 app.post('/api/gamers', function(req, res) {
   if (Array.isArray(req.body)) {
+    console.log(`Checking if team with title ${req.body[0].team} is present in database for game ${req.body[0].game}`)
     Gamer.find({ game: req.body[0].game, team: req.body[0].team })
       .then(gamers => {
         const teams = [...new Set(gamers.map(item => item.team))];
         if (teams.includes(req.body[0].team)) {
+          console.log(`Team with title ${req.body[0].team} is present in database for game ${req.body[0].game}`)
           return false
         }
         return true
@@ -47,6 +50,7 @@ app.post('/api/gamers', function(req, res) {
         if (!ress) {
           res.send({ error: 'INVALID_TEAM_TITLE' })
         } else {
+          console.log(`Storing gamers in team ${req.body[0].team} for game ${req.body[0].game} in database`, req.body)
           Gamer.insertMany(req.body)
             .then(result => {
               res.json(result)
@@ -54,6 +58,7 @@ app.post('/api/gamers', function(req, res) {
         }
       })
   } else {
+    console.log(`Storing gamer for game ${req.body.game} in database`, req.body)
     Gamer.create({
       game: req.body.game,
       nickname: req.body.nickname,
